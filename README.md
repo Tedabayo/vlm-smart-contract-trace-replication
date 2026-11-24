@@ -1,29 +1,29 @@
 # Evaluating Evidence Representations for AI-Based Ethereum Smart Contract Vulnerability Analysis
 
-Supplementary research materials for a KTH master's thesis investigating AI-based vulnerability analysis across five evidence conditions for 20 historical Ethereum exploits. The study records 300 responses from three AI models.
+Supplementary research materials accompanying a KTH master's thesis examining AI-assisted vulnerability analysis of 20 historical Ethereum smart-contract exploits using three models and five evidence conditions.
 
-## Publication status
+## Research archive
 
-**The replication archive has not yet been published.** A draft GitHub Release contains an expanded, partially redacted research archive, pending final rights and privacy review. Until publication, the repository alone does not provide a downloadable public replication package.
+**[GitHub Releases](https://github.com/Tedabayo/vlm-smart-contract-trace-replication/releases)** hosts any published, versioned research archive. A saved *draft* release is not publicly accessible.
 
-## Contents of the draft archive
+The v0.1.0 archive is a **partial replication and results-audit package**:
 
-- **Experimental evidence:** 100 original condition/case prompts; 20 distinct Perfetto visualisations and 20 distinct structured-text traces (40 copies of each format across their B and C conditions). Original source-code excerpts are withheld.
-- **Source provenance:** original transaction references for 20 incidents, a source-retrieval guide, and SHA-256 records for 270 withheld source-file positions (including copies across conditions).
-- **Responses and scores:** 300 response records, of which 100 are redacted public copies and 200 are unchanged; the author's original scoring records and notes are preserved. Scores refer to the original, unredacted responses.
-- **Verification and methods:** historical preparation and trace-reconstruction scripts; file-integrity, input-coverage, and aggregate-score verification scripts; methodological limitations and redaction records.
+- **Experimental evidence:** 100 original condition/case prompts, 20 distinct Perfetto visualisations and 20 distinct structured-text traces, repeated as appropriate across B/C conditions (40 image positions and 40 text-trace positions).
+- **Provenance:** public-chain transaction identifiers for all 20 incidents, source-selection notes and retrieval guidance, SHA-256 records for 270 withheld original source-excerpt positions, and an Alchemy Ethereum Mainnet/Foundry Anvil trace-reconstruction description.
+- **Responses and assessment:** 300 model-response records, with 100 public-copy redactions; the researcher's 41 original scoring files, unchanged. Scores were assigned to the **original unredacted** responses.
+- **Verification:** frozen-file checksum manifest, input-coverage verification, offline score aggregation, historical preparation scripts, publication-screening notes and methodological limitations.
 
-The archived scoring records reproduce **172/300** correct vulnerability classifications and **151/172** full-credit root-cause and applicable evidence-localisation assessments among the correctly classified responses. These are the researcher's assessments, not independent re-adjudications.
+The preserved scoring records reproduce **172/300** correct classifications and **151/172** full-credit root-cause and applicable localisation assessments among correctly classified responses. These represent the researcher's recorded judgments, not independent re-adjudication.
 
-## Reproducibility limits
+## Scope and limitations
 
-This is a **partial replication and results-audit archive**, not a complete experiment-replay package. It excludes third-party Solidity/Vyper source excerpts, includes redactions in 100 responses, and does not preserve complete per-request model invocation metadata. As a result, it supports inspection of trace representations, verification of the archived scoring aggregates, and partial reconstruction of experimental conditions, **not** complete independent replay of all model requests or reassessment of every original answer.
+The archive **does not permit complete independent reproduction** of all commercial model requests. Original third-party Solidity/Vyper source excerpts are withheld, some public response copies are redacted, and complete per-request model invocation metadata and original GPT/Claude collection runners are unavailable. The package supports inspection of the included traces, file-integrity checks, and auditing the reported aggregate results, with the limitations documented in the ZIP.
 
-The historical Ethereum RPC provider was **Alchemy Ethereum Mainnet**, as reported from the researcher's local shell-history review. Foundry Anvil was used to fork and reconstruct the transactions before producing the trace representations. The public candidate includes `RPC_PROVENANCE.md` explaining the supporting evidence and its limits; credentials are excluded.
+The researcher identifies **Alchemy Ethereum Mainnet** as the RPC provider for Foundry Anvil transaction reconstruction, based on their locally reviewed shell history. No credentials are included. This attribution does not establish general redistribution rights in third-party data.
 
-## Verification
+## Offline verification
 
-When the archive is released, extract it and run the following commands from its root:
+After downloading and extracting a published ZIP, run these commands at its root:
 
 ```sh
 python3 verify_package.py
@@ -31,8 +31,4 @@ python3 verify_input_coverage.py
 python3 reproduce_aggregates.py
 ```
 
-The current candidate passes the file-integrity, evidence-coverage, and aggregate-score checks. Technical validation does not establish third-party redistribution permissions or full experimental reproducibility.
-
-## Citation and rights
-
-A versioned public release URL and citation details will be supplied once the disclosure review is complete. No blanket licence is asserted for third-party source material, blockchain data, or model-generated content.
+No blanket licence is asserted for third-party source material, blockchain-derived material, or model-generated content. See the archive's `PUBLICATION_REVIEW.md`, `REPLICATION_SCOPE.md`, and `KNOWN_LIMITATIONS.md` for screening findings, attribution and study limitations.
