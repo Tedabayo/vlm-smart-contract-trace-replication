@@ -1,35 +1,38 @@
 # Evaluating Evidence Representations for AI-Based Ethereum Smart Contract Vulnerability Analysis
 
-This repository is being prepared to host supplementary research materials for the master's thesis *Evaluating Evidence Representations for AI-Based Ethereum Smart Contract Vulnerability Analysis*.
-
-The study evaluates 20 historical Ethereum exploit incidents, three AI models, five evidence conditions, and 300 archived model responses.
+Supplementary research materials for a KTH master's thesis investigating AI-based vulnerability analysis across five evidence conditions for 20 historical Ethereum exploits. The study records 300 responses from three AI models.
 
 ## Publication status
 
-**Not yet published.** The available public-release working copy is a **limited results-audit candidate**, pending a final disclosure and rights review. No downloadable research archive has been released here yet.
+**The replication archive has not yet been published.** A draft GitHub Release contains an expanded, partially redacted research archive, pending final rights and privacy review. Until publication, the repository alone does not provide a downloadable public replication package.
 
-## Scope of the planned limited archive
+## Contents of the draft archive
 
-The candidate contains:
+- **Experimental evidence:** 100 original condition/case prompts; 20 distinct Perfetto visualisations and 20 distinct structured-text traces (40 copies of each format across their B and C conditions). Original source-code excerpts are withheld.
+- **Source provenance:** original transaction references for 20 incidents, a source-retrieval guide, and SHA-256 records for 270 withheld source-file positions (including copies across conditions).
+- **Responses and scores:** 300 response records, of which 100 are redacted public copies and 200 are unchanged; the author's original scoring records and notes are preserved. Scores refer to the original, unredacted responses.
+- **Verification and methods:** historical preparation and trace-reconstruction scripts; file-integrity, input-coverage, and aggregate-score verification scripts; methodological limitations and redaction records.
 
-- 300 saved response records; **100 public-copy responses have code/example blocks redacted**, while 200 remain unchanged.
-- The researcher's original scoring files and written evaluation notes.
-- A case index, a response-redaction/hash record, checksum verification, and an offline script that recalculates the reported aggregate results.
-
-The scoring data reproduces **172/300** correct vulnerability classifications and **151/172** full-credit root-cause and applicable localisation results among correctly classified responses. These are the researcher's recorded assessments, not independent re-adjudication.
+The archived scoring records reproduce **172/300** correct vulnerability classifications and **151/172** full-credit root-cause and applicable evidence-localisation assessments among the correctly classified responses. These are the researcher's assessments, not independent re-adjudications.
 
 ## Reproducibility limits
 
-**This is not a complete experiment-replay package.** It excludes original third-party Solidity/Vyper sources, execution-trace evidence, experimental inputs, and model credentials. Some model responses are modified for the proposed public copy, so the package cannot support a complete rerun of the model queries or fully independent reassessment of every original answer. Scoring was performed on the original unredacted responses.
+This is a **partial replication and results-audit archive**, not a complete experiment-replay package. It excludes third-party Solidity/Vyper source excerpts, includes redactions in 100 responses, and does not preserve complete per-request model invocation metadata. As a result, it supports inspection of trace representations, verification of the archived scoring aggregates, and partial reconstruction of experimental conditions, **not** complete independent replay of all model requests or reassessment of every original answer.
 
-The original private research archive is retained separately. Publication of the limited package remains subject to final checks for model-output redistribution, third-party rights, and sensitive information.
+The historical Ethereum RPC provider was **Alchemy Ethereum Mainnet**, as reported from the researcher's local shell-history review. Foundry Anvil was used to fork and reconstruct the transactions before producing the trace representations. The public candidate includes `RPC_PROVENANCE.md` explaining the supporting evidence and its limits; credentials are excluded.
 
-## Ethereum trace provenance
+## Verification
 
-The researcher reports that the Ethereum Mainnet RPC endpoint used for trace reconstruction was **Alchemy** (`eth-mainnet.g.alchemy.com`). This attribution is based on their locally inspected shell configuration/history; the history and credentials are not included in the public archive. The preserved `trace_case.sh` script reads `ETH_RPC_URL` and uses Foundry Anvil to fork and replay the relevant transaction locally, then obtains a local `callTracer` trace. The resulting execution information was transformed into structured-text traces and Perfetto visualisations.
+When the archive is released, extract it and run the following commands from its root:
 
-**This establishes the reported provider and workflow, not third-party redistribution clearance.** The archive remains a draft pending a final rights and privacy review.
+```sh
+python3 verify_package.py
+python3 verify_input_coverage.py
+python3 reproduce_aggregates.py
+```
+
+The current candidate passes the file-integrity, evidence-coverage, and aggregate-score checks. Technical validation does not establish third-party redistribution permissions or full experimental reproducibility.
 
 ## Citation and rights
 
-A versioned GitHub Release and citation information will be added only after the publication review is complete. No blanket licence is asserted for third-party source code, blockchain data, or model-generated content.
+A versioned public release URL and citation details will be supplied once the disclosure review is complete. No blanket licence is asserted for third-party source material, blockchain data, or model-generated content.
