@@ -1,4 +1,4 @@
-# VLM-Assisted Smart Contract Execution Trace Understanding
+# Evaluating Evidence Representations for AI-Based Ethereum Smart Contract Vulnerability Analysis
 
 This repository is being prepared to host supplementary research materials for the master's thesis *VLM-Assisted Smart Contract Execution Trace Understanding*.
 
