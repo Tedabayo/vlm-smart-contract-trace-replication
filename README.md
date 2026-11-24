@@ -24,6 +24,12 @@ The scoring data reproduces **172/300** correct vulnerability classifications an
 
 The original private research archive is retained separately. Publication of the limited package remains subject to final checks for model-output redistribution, third-party rights, and sensitive information.
 
+## Ethereum trace provenance
+
+The researcher reports that the Ethereum Mainnet RPC endpoint used for trace reconstruction was **Alchemy** (`eth-mainnet.g.alchemy.com`). This attribution is based on their locally inspected shell configuration/history; the history and credentials are not included in the public archive. The preserved `trace_case.sh` script reads `ETH_RPC_URL` and uses Foundry Anvil to fork and replay the relevant transaction locally, then obtains a local `callTracer` trace. The resulting execution information was transformed into structured-text traces and Perfetto visualisations.
+
+**This establishes the reported provider and workflow, not third-party redistribution clearance.** The archive remains a draft pending a final rights and privacy review.
+
 ## Citation and rights
 
 A versioned GitHub Release and citation information will be added only after the publication review is complete. No blanket licence is asserted for third-party source code, blockchain data, or model-generated content.
